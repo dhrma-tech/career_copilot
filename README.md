@@ -36,5 +36,5 @@ This project is built as a **hackathon MVP** using **HTML, CSS, and JavaScript**
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/<your-username>/career-copilot.git
+git clone https://github.com/dhrma-tech/career-copilot.git
 
