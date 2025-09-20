@@ -1,10 +1,17 @@
 const user = JSON.parse(localStorage.getItem('user'));
-document.getElementById('welcome').innerText = `Welcome, ${user.name}!`;
 
-// Dark mode toggle
-document.getElementById('darkModeToggle').onclick = () => {
-  document.body.classList.toggle('dark-mode');
-};
+if (!user) {
+  // If no user data, redirect to login page
+  window.location.href = './index.html';
+} else {
+  // If user data exists, proceed with setting up the dashboard
+  document.getElementById('welcome').innerText = `Welcome, ${user.name}!`;
+
+  // Your existing dashboard code...
+  // Dark mode toggle
+  document.getElementById('darkModeToggle').onclick = () => {
+    document.body.classList.toggle('dark-mode');
+  };
 
 // Show initial tab
 showTab('courses');
@@ -102,3 +109,4 @@ function showTab(tab) {
     content.style.opacity = 1;
   }, 150);
 }
+
