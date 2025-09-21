@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Career Copilot 🚀</title>
   <link rel="stylesheet" href="./style.css">
-  <script src="./script.js" defer></script>
 </head>
 <body>
   <div class="login-card">
@@ -15,20 +14,15 @@
       <input type="text" placeholder="Your Name" id="name" required>
       <select id="branch" required>
         <option value="">Select Your Branch</option>
-        <option value="CS">CS</option>
-        <option value="Mech">Mech</option>
-        <option value="Civil">Civil</option>
-        <option value="Non-tech">Non-tech</option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="Mechanical Engineering">Mechanical Engineering</option>
+        <option value="Civil Engineering">Civil Engineering</option>
+        <option value="Non-technical">Non-technical</option>
       </select>
-      <label>Interests:</label>
-      <div class="interests">
-        <input type="checkbox" value="AI/ML"> AI/ML
-        <input type="checkbox" value="Data Science"> Data Science
-        <input type="checkbox" value="Web Dev"> Web Dev
-        <input type="checkbox" value="Cybersecurity"> Cybersecurity
-      </div>
+      <input type="text" placeholder="Your Interests (e.g., AI/ML, Web Dev)" id="interests" required>
       <button type="submit">Continue</button>
     </form>
   </div>
+  <script src="./script.js" defer></script>
 </body>
 </html>
