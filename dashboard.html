@@ -5,18 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - Career Copilot</title>
   <link rel="stylesheet" href="style.css">
-  <script src="dashboard.js" defer></script>
 </head>
 <body>
-  <h1 id="welcome"></h1>
-  <button id="logoutBtn" style="float: right;">Logout</button>
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <h1 id="welcome"></h1>
+      <button id="logoutBtn">Logout</button>
+    </header>
 
-  <div class="tabs">
-    <button onclick="showTab('courses')">Courses</button>
-    <button onclick="showTab('roadmap')">Roadmap</button>
-    <button onclick="showTab('tasks')">Tasks</button>
+    <div class="tabs">
+      <button class="active" onclick="showTab('roadmap', this)">Roadmap</button>
+      <button onclick="showTab('courses', this)">Courses</button>
+      <button onclick="showTab('tasks', this)">Tasks</button>
+    </div>
+
+    <div id="content">
+      </div>
   </div>
-
-  <div id="content"></div>
+  <script src="dashboard.js" defer></script>
 </body>
 </html>
