@@ -41,16 +41,10 @@ app.post('/generate', async (req, res) => {
     const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
     const result = await model.generateContent(prompt);
     const response = await result.response;
-    
-    let htmlContent = response.text().trim();
+    const text = response.text();
 
-    // FIX: Remove leading/trailing Markdown code fences (e.g., ```html or ```)
-    // This addresses the unwanted '```html' text visible in the frontend.
-    const fencePattern = /^```(html)?\s*|```\s*$/gs;
-    htmlContent = htmlContent.replace(fencePattern, '').trim();
-    
-    // Send the cleaned HTML back to the frontend
-    res.json({ html: htmlContent });
+    // Send the AI-generated HTML back to the frontend
+    res.json({ html: text });
 
   } catch (error) {
     console.error("Error in /generate endpoint:", error);
