@@ -1,71 +1,69 @@
-# Career Copilot
+# Career Copilot 🚀
 
-**One Stop Personalized Career & Education Advisor – Hackathon Prototype**
+**One Stop Personalized AI-Powered Career & Education Advisor**
 
 ---
 
 ## 💡 Overview
-Career Copilot is a minimal, modern prototype website designed to guide students in their career and education journey. This hackathon project focuses on **AI & Data Science (AI-DS)** pathways and provides a **personalized roadmap**, curated **courses**, and a **task reminder system**.
+Career Copilot is a dynamic, modern website designed to guide students in their career and education journey. This project uses the Google Gemini API to provide a **personalized roadmap** and curated **courses** based on user input, and includes a **task reminder system**.
 
 ---
 
 ## 🖥️ Features
 
-1. **Landing/Login Page**
-   - Collects user information: Name, Education Branch, Interests
-   - Minimal Notion-style design with soft shadows, rounded corners, and clean fonts
+1.  **Dynamic Onboarding**
+    -   Collects user's Name, Education Branch, and Interests via text input.
 
-2. **Dashboard**
-   - **Courses Tab**: Curated AI-DS courses (hardcoded sample data)
-   - **Roadmap Tab**: Step-by-step AI-DS career roadmap
-   - **Tasks Tab**: Simple to-do list with localStorage persistence (now user-specific!)
+2.  **AI-Powered Dashboard**
+    -   **Roadmap Tab**: Generates a real-time, step-by-step career roadmap tailored to the user's profile and interests.
+    -   **Courses Tab**: Recommends a personalized list of online courses.
+    -   **Tasks Tab**: A simple to-do list with localStorage persistence to track personal goals.
 
-3. **Navigation**
-   - Switch between Courses, Roadmap, and Tasks tabs
-   - Fully responsive and interactive
-   - Logout button for session management
-
----
-
-## 🎨 Design
-- Minimal, modern, Notion-inspired UI
-- White background, soft shadows, rounded corners
-- Responsive layout suitable for desktops, tablets, and mobiles
-- Interactive hover effects
+3.  **Modern, Professional UI**
+    -   Clean, responsive, and intuitive design suitable for all devices.
 
 ---
 
 ## ⚙️ Tech Stack
-- HTML / CSS / JavaScript (frontend only)
-- No backend required
-- LocalStorage used to save tasks and user preferences
+
+-   **Frontend**: HTML, CSS, JavaScript
+-   **Backend**: Node.js, Express.js
+-   **AI Model**: Google Gemini 1.5 Flash
+-   **Data Persistence**: Browser LocalStorage for tasks and user sessions.
 
 ---
 
 ## 🚀 How to Run
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/dhrma-tech/career-copilot.git
-   ```
-2. Open `index.html` in your browser.
+### Prerequisites
+-   Node.js and npm installed.
+-   A Google AI Studio API Key.
 
-### Deploying to GitHub Pages
-1. Go to your repo settings → Pages.
-2. Select the branch (usually `main`).
-3. Save. Your site will be live at:
-   ```
-   https://{your-username}.github.io/career-copilot/
-   ```
+### 1. Setup
+1.  Clone this repository.
+2.  Navigate into the `career_copilot` directory:
+    ```bash
+    cd career-copilot
+    ```
+3.  Install the backend dependencies:
+    ```bash
+    npm install
+    ```
+4.  Create a file named `.env` in the root directory.
+5.  Add your API key to the `.env` file:
+    ```
+    API_KEY=YOUR_GOOGLE_AI_API_KEY
+    ```
 
----
+### 2. Running the Application
+1.  **Start the Backend Server:**
+    Open a terminal in the project directory and run:
+    ```bash
+    npm start
+    ```
+    The server will be running at `http://localhost:3000`.
 
-## 🛠️ Contributing
+2.  **Open the Frontend:**
+    Open the `index.html` file in your web browser.
 
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
-
----
-
-## 📜 License
-
-[MIT](LICENSE)
+You can now use the application, and it will communicate with your local server to get AI-generated advice!
