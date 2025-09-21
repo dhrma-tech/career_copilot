@@ -26,7 +26,9 @@ async function getAiContent(type) {
   contentEl.innerHTML = '<div class="loader"></div>'; // Show loading spinner
 
   try {
-    const response = await fetch('http://localhost:3000/generate', {
+    // --- THIS IS THE LINE TO CHANGE ---
+    // Replace the placeholder with your actual Render URL
+    const response = await fetch('https://your-backend-url.onrender.com/generate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
