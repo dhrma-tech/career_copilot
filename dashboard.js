@@ -28,7 +28,7 @@ async function getAiContent(type) {
   try {
     // --- THIS IS THE UPDATED LINE ---
     // Replace the placeholder with your actual Render URL
-    const response = await fetch('https://your-backend-url.onrender.com/generate', {
+    const response = await fetch('https://career-copilot-backend-u39g.onrender.com', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -117,4 +117,5 @@ function renderTasks() {
     };
   });
 }
+
 
