@@ -1,40 +1,71 @@
-# 🚀 Career Copilot - One-Stop Personalized Career & Education Advisor
+# Career Copilot
 
-Career Copilot is a minimal and interactive web prototype designed to help students **discover AI/DS courses, create a personalized roadmap, and manage tasks**—all in one place.
-
-This project is built as a **hackathon MVP** using **HTML, CSS, and JavaScript**, with **Notion-inspired clean UI**, **interactive cards**, **progress bars**, and **task management**.
+**One Stop Personalized Career & Education Advisor – Hackathon Prototype**
 
 ---
 
-## 🔹 Features
-
-- **Personalized Login:** Capture user name, branch, and interests.
-- **Courses Tab:** AI/DS-related courses with clean card UI and icons.
-- **Roadmap Tab:** Step-by-step learning roadmap with animated progress bars.
-- **Tasks Tab:** Add, view, and mark tasks as done.
-- **Interactive UI:**
-  - Hover animations on cards and icons
-  - Smooth fade-in for content
-  - Color-coded cards for Courses (blue), Roadmap (orange), Tasks (green)
-- **Extra Polishes:**
-  - Welcome modal on first login
-  - Dark mode toggle
-  - Responsive layout
+## 💡 Overview
+Career Copilot is a minimal, modern prototype website designed to guide students in their career and education journey. This hackathon project focuses on **AI & Data Science (AI-DS)** pathways and provides a **personalized roadmap**, curated **courses**, and a **task reminder system**.
 
 ---
 
-## 🛠 Tech Stack
+## 🖥️ Features
 
-- **HTML / CSS / JavaScript**  
-- **Font Awesome** for icons  
-- **LocalStorage** for task and user data  
-- **GitHub Pages** for live demo
+1. **Landing/Login Page**
+   - Collects user information: Name, Education Branch, Interests
+   - Minimal Notion-style design with soft shadows, rounded corners, and clean fonts
+
+2. **Dashboard**
+   - **Courses Tab**: Curated AI-DS courses (hardcoded sample data)
+   - **Roadmap Tab**: Step-by-step AI-DS career roadmap
+   - **Tasks Tab**: Simple to-do list with localStorage persistence (now user-specific!)
+
+3. **Navigation**
+   - Switch between Courses, Roadmap, and Tasks tabs
+   - Fully responsive and interactive
+   - Logout button for session management
 
 ---
 
-## 🚀 Usage
+## 🎨 Design
+- Minimal, modern, Notion-inspired UI
+- White background, soft shadows, rounded corners
+- Responsive layout suitable for desktops, tablets, and mobiles
+- Interactive hover effects
 
-1. **Clone the repository**
-```bash
-git clone https://github.com/dhrma-tech/career-copilot.git
+---
 
+## ⚙️ Tech Stack
+- HTML / CSS / JavaScript (frontend only)
+- No backend required
+- LocalStorage used to save tasks and user preferences
+
+---
+
+## 🚀 How to Run
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/dhrma-tech/career-copilot.git
+   ```
+2. Open `index.html` in your browser.
+
+### Deploying to GitHub Pages
+1. Go to your repo settings → Pages.
+2. Select the branch (usually `main`).
+3. Save. Your site will be live at:
+   ```
+   https://{your-username}.github.io/career-copilot/
+   ```
+
+---
+
+## 🛠️ Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+## 📜 License
+
+[MIT](LICENSE)
