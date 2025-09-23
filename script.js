@@ -1,6 +1,5 @@
 // Modal Handling
 const modal = document.getElementById('login-modal');
-const loginNavBtn = document.getElementById('login-nav-btn');
 const getStartedBtn = document.getElementById('get-started-btn');
 const closeModalBtn = document.querySelector('.modal-close-btn');
 
@@ -17,8 +16,7 @@ const closeModal = () => {
 };
 
 // Add event listeners only if the buttons exist on the page
-if (loginNavBtn && getStartedBtn && closeModalBtn) {
-  loginNavBtn.addEventListener('click', openModal);
+if (getStartedBtn && closeModalBtn) {
   getStartedBtn.addEventListener('click', openModal);
   closeModalBtn.addEventListener('click', closeModal);
 
@@ -48,7 +46,6 @@ if (loginForm) {
     const user = { name, branch, interests };
     localStorage.setItem('user', JSON.stringify(user));
 
-    // --- THIS IS THE UPDATED LINE ---
-    window.location.href = 'vision.html'; // Redirect to the new vision page
+    window.location.href = 'dashboard.html';
   });
 }
