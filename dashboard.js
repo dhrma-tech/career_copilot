@@ -1,28 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   const user = JSON.parse(localStorage.getItem('user'));
-  const themeToggle = document.getElementById('theme-toggle');
-  const body = document.body;
 
   // If no user data is found, redirect to the login page
   if (!user) {
     window.location.href = 'index.html';
     return;
   }
-
-  // Theme switcher logic
-  const currentTheme = localStorage.getItem('theme');
-  if (currentTheme) {
-    body.classList.add(currentTheme);
-  }
-
-  themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    let theme = 'light-mode';
-    if (body.classList.contains('dark-mode')) {
-      theme = 'dark-mode';
-    }
-    localStorage.setItem('theme', theme);
-  });
 
   document.getElementById('welcome').innerText = `Welcome, ${user.name}!`;
 
@@ -43,8 +26,6 @@ async function getAiContent(type) {
   contentEl.innerHTML = '<div class="loader"></div>'; // Show loading spinner
 
   try {
-    // --- THIS IS THE UPDATED LINE ---
-    // Replace the placeholder with your actual Render URL
     const response = await fetch('https://career-copilot-backend-u39g.onrender.com/generate', {
       method: 'POST',
       headers: {
