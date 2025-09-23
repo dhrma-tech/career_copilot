@@ -34,7 +34,7 @@ async function getAiContent(type) {
 
   try {
     // --- THIS IS THE CORRECTED LINE ---
-    const response = await fetch('https://career-copilot-backend-u39g.onrender.com', {
+    const response = await fetch('https://career-copilot-backend-u39g.onrender.com/generate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -139,4 +139,5 @@ function renderTasks() {
     };
   });
 }
+
 
