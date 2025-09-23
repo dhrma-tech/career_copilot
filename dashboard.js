@@ -26,7 +26,8 @@ async function getAiContent(type) {
   contentEl.innerHTML = '<div class="loader"></div>'; // Show loading spinner
 
   try {
-    const response = await fetch('https://career-copilot-backend-u39g.onrender.com/generate', {
+    // --- THIS IS THE CORRECTED LINE ---
+    const response = await fetch('http://localhost:3000/generate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
