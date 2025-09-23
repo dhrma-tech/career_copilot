@@ -1,31 +1,39 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Modal Handling
-  const modal = document.getElementById('login-modal');
-  const loginNavBtn = document.getElementById('login-nav-btn');
-  const getStartedBtn = document.getElementById('get-started-btn');
-  const closeModalBtn = document.querySelector('.modal-close-btn');
+// Modal Handling
+const modal = document.getElementById('login-modal');
+const loginNavBtn = document.getElementById('login-nav-btn');
+const getStartedBtn = document.getElementById('get-started-btn');
+const closeModalBtn = document.querySelector('.modal-close-btn');
 
-  const openModal = () => {
+const openModal = () => {
+  if (modal) {
     modal.classList.remove('hidden');
-  };
+  }
+};
 
-  const closeModal = () => {
+const closeModal = () => {
+  if (modal) {
     modal.classList.add('hidden');
-  };
+  }
+};
 
+// Add event listeners only if the buttons exist on the page
+if (loginNavBtn && getStartedBtn && closeModalBtn) {
   loginNavBtn.addEventListener('click', openModal);
   getStartedBtn.addEventListener('click', openModal);
   closeModalBtn.addEventListener('click', closeModal);
-  
+
   // Close modal if user clicks on the overlay
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
       closeModal();
     }
   });
+}
 
-  // Form Submission Handling
-  document.getElementById('loginForm').addEventListener('submit', function(e) {
+// Form Submission Handling
+const loginForm = document.getElementById('loginForm');
+if (loginForm) {
+  loginForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const name = document.getElementById('name').value;
     const branch = document.getElementById('branch').value;
@@ -42,4 +50,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.location.href = 'dashboard.html';
   });
-});
+}
