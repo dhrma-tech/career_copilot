@@ -33,7 +33,7 @@ async function getAiContent(type) {
   contentEl.innerHTML = `<div class="loader-container"><div class="loader"></div><p class="loader-text">${loadingMessage}</p></div>`;
 
   try {
-    const response = await fetch('http://localhost:3000/generate', {
+    const response = await fetch('https://career-copilot-backend-u39g.onrender.com', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -164,3 +164,4 @@ function renderTasks() {
     };
   });
 }
+
