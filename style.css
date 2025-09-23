@@ -1,16 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
 :root {
-  /* Fresh & Vibrant Color Palette */
-  --primary-color: #0077ff; /* Vibrant Blue */
-  --secondary-color: #ff007f; /* Bright Magenta */
-  --accent-color: #ffc400; /* Sunny Yellow */
-  --background-color: #f8f9fc; /* Clean Off-White */
+  /* Minimalist & Aesthetic Color Palette */
+  --primary-color: #4a4e69; /* Muted Indigo */
+  --secondary-color: #9a8c98; /* Dusty Lavender */
+  --background-color: #f2e9e4; /* Light Beige */
   --card-background: #ffffff;
-  --text-color: #1a1a2e; /* Dark Navy */
-  --text-muted-color: #6a6a7a;
-  --border-color: #e8eaf0;
-  --shadow: 0 4px 20px rgba(0,0,0,0.07);
+  --text-color: #22223b; /* Dark Indigo */
+  --text-muted-color: #6d6a75;
+  --border-color: #c9ada7;
+  --shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
 body {
@@ -24,12 +23,8 @@ body {
 
 .dashboard-container {
   padding: 2rem;
-}
-
-.login-card, .dashboard-container {
-  width: 100%;
-  max-width: 800px;
-  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .login-card {
@@ -40,7 +35,7 @@ body {
   text-align: center;
   border: 1px solid var(--border-color);
   margin: 0 auto;
-  position: relative; /* This is required for the close button fix */
+  position: relative;
 }
 
 h1 {
@@ -55,7 +50,7 @@ p {
   line-height: 1.6;
 }
 
-input, select {
+input, select, textarea {
   width: 100%;
   padding: 0.85rem;
   margin: 0.75rem 0;
@@ -63,15 +58,15 @@ input, select {
   border: 1px solid var(--border-color);
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
-  background-color: #fdfdff;
+  background-color: #fff;
   color: var(--text-color);
   transition: all 0.2s ease-in-out;
 }
 
-input:focus, select:focus {
+input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(0, 119, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(74, 78, 105, 0.1);
 }
 
 button {
@@ -79,8 +74,8 @@ button {
   border: none;
   border-radius: 8px;
   background: var(--primary-color);
-  color: #fff;
-  font-weight: 700;
+  color: white;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   width: 100%;
@@ -88,9 +83,9 @@ button {
 }
 
 button:hover {
-  background: #0062cc;
+  background: #3c405a;
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 119, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard-header {
@@ -108,10 +103,12 @@ button:hover {
 
 #logoutBtn {
   width: auto;
-  background: var(--secondary-color);
+  background: #e4e4e4;
+  color: var(--text-color);
+  font-weight: 500;
 }
 #logoutBtn:hover {
-  background: #d9006c;
+  background: #d1d1d1;
 }
 
 .tabs {
@@ -158,6 +155,110 @@ button:hover {
   color: var(--text-color);
 }
 
+/* === New Dashboard Layout Styles === */
+.dashboard-body {
+  display: grid;
+  grid-template-columns: 1fr 300px; /* Main content and sidebar */
+  gap: 2rem;
+  align-items: start;
+}
+
+.dashboard-main {
+  grid-column: 1 / 2;
+}
+
+.dashboard-sidebar {
+  grid-column: 2 / 3;
+  position: sticky;
+  top: 2rem;
+}
+
+.sidebar-widget {
+  background-color: var(--card-background);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.sidebar-widget h3 {
+  margin-top: 0;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* === Updated Task List Styles === */
+.task-input-container {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+#taskInput {
+  flex-grow: 1;
+  margin: 0;
+  padding: 0.6rem;
+}
+#addTaskBtn {
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.task-list {
+  max-height: 40vh;
+  overflow-y: auto;
+}
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.task-item:last-child {
+  border-bottom: none;
+}
+.delete-btn {
+  background-color: transparent;
+  color: var(--text-muted-color);
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  width: auto;
+  margin: 0;
+  padding: 0 0.5rem;
+  border-radius: 50%;
+}
+.delete-btn:hover {
+  background-color: #f0f0f0;
+  color: var(--primary-color);
+}
+.no-tasks {
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+}
+
+/* === Profile Card Styles === */
+.profile-card p {
+    margin-bottom: 1rem;
+}
+.profile-card p strong {
+    color: var(--text-color);
+}
+
+
+/* ... (rest of the styles are below) ... */
+
+.loader-container {
+  text-align: center;
+  margin-top: 4rem;
+}
+
 .loader {
   border: 5px solid #f3f3f3;
   border-top: 5px solid var(--primary-color);
@@ -165,7 +266,13 @@ button:hover {
   width: 50px;
   height: 50px;
   animation: spin 1s linear infinite;
-  margin: 3rem auto;
+  margin: 0 auto 1rem;
+}
+
+.loader-text {
+  color: var(--text-muted-color);
+  font-weight: 500;
+  animation: pulse 1.5s ease-in-out infinite;
 }
 
 @keyframes spin {
@@ -173,47 +280,18 @@ button:hover {
   100% { transform: rotate(360deg); }
 }
 
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
 @keyframes fadeIn {
   0% { opacity: 0; transform: translateY(15px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Task list styling */
-.task-input-container {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-#taskInput {
-  flex-grow: 1;
-  margin: 0;
-}
-#addTaskBtn {
-  width: auto;
-  margin: 0;
-}
-.task-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.5rem;
-}
-.delete-btn {
-  background-color: #f0f0f0;
-  color: #555;
-  border: 1px solid #ddd;
-  padding: 0.4rem 0.8rem;
-  border-radius: 8px;
-  cursor: pointer;
-  width: auto;
-  margin: 0;
-}
-.delete-btn:hover {
-  background-color: #e4e4e4;
-}
-
 /* === Landing Page Styles === */
-
 .landing-page {
   background-color: var(--background-color);
 }
@@ -229,6 +307,7 @@ button:hover {
 .navbar {
   background-color: transparent;
   padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .navbar .container {
@@ -270,12 +349,12 @@ button:hover {
 .features {
   padding: 5rem 0;
   text-align: center;
+  background-color: #fff;
 }
 
 .features h2 {
   font-size: 2.5rem;
   margin-bottom: 3rem;
-  color: var(--text-color);
 }
 
 .features-grid {
@@ -286,24 +365,15 @@ button:hover {
 }
 
 .feature-card {
-  background-color: var(--card-background);
+  background-color: #fff;
   padding: 2rem;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-  box-shadow: var(--shadow);
   border: 1px solid var(--border-color);
+  border-radius: 12px;
 }
-.feature-card:hover {
-    transform: translateY(-10px);
-}
-.feature-card.color-1 { border-top: 4px solid var(--primary-color); }
-.feature-card.color-2 { border-top: 4px solid var(--secondary-color); }
-.feature-card.color-3 { border-top: 4px solid var(--accent-color); }
-
 
 .feature-card h3 {
   margin-top: 0;
-  color: var(--text-color);
+  color: var(--primary-color);
 }
 
 /* Footer */
@@ -321,8 +391,7 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -352,7 +421,6 @@ button:hover {
   text-align: center;
 }
 
-/* --- THIS SECTION IS UPDATED FOR THE FIX --- */
 .modal-close-btn {
   position: absolute;
   top: 15px;
@@ -377,65 +445,4 @@ button:hover {
 
 .hidden {
   display: none;
-}
-
-/* === Course Card Styles === */
-.course-card {
-    background-color: var(--card-background);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    border: 1px solid var(--border-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: var(--shadow);
-}
-.course-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.course-card h4 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-    color: var(--text-color);
-}
-
-.course-meta {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--text-muted-color);
-}
-.course-meta span {
-    background-color: #e8f3ff;
-    color: var(--primary-color);
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 500;
-}
-
-/* Different colors for course cards */
-.course-card.course-1 { border-left: 5px solid var(--primary-color); }
-.course-card.course-2 { border-left: 5px solid var(--secondary-color); }
-.course-card.course-3 { border-left: 5px solid var(--accent-color); }
-.course-card.course-4 { border-left: 5px solid #e53935; }
-
-
-.progress-bar-container {
-    width: 100%;
-    height: 8px;
-    background-color: #e8eaf0;
-    border-radius: 4px;
-    margin-top: 1rem;
-    overflow: hidden;
-}
-.progress-bar {
-    width: 0%;
-    height: 100%;
-    background-color: var(--primary-color);
 }
