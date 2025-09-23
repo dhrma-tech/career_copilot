@@ -61,7 +61,7 @@ Career Copilot is a dynamic, modern website designed to guide students in their 
     ```bash
     npm start
     ```
-    The server will be running at `http://localhost:3000`.
+    The server will be running at `https://career-copilot-backend-u39g.onrender.com`.
 
 2.  **Open the Frontend:**
     Open the `index.html` file in your web browser.
