@@ -15,18 +15,24 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = 'index.html';
   };
 
-  // Load the default tab on page load
+  // Load the default tab and the tasks sidebar on page load
   showTab('roadmap', document.querySelector('.tabs button'));
+  renderTasks();
 });
 
 // Fetches AI-generated content from the backend
 async function getAiContent(type) {
   const user = JSON.parse(localStorage.getItem('user'));
   const contentEl = document.getElementById('content');
-  contentEl.innerHTML = '<div class="loader"></div>'; // Show loading spinner
+  
+  let loadingMessage = 'Generating...';
+  if (type === 'roadmap') loadingMessage = 'Generating your personalized roadmap...';
+  if (type === 'courses') loadingMessage = 'Finding the best courses for you...';
+  if (type === 'growth') loadingMessage = 'Curating self-growth insights...';
+  
+  contentEl.innerHTML = `<div class="loader-container"><div class="loader"></div><p class="loader-text">${loadingMessage}</p></div>`;
 
   try {
-    // --- THIS IS THE CORRECTED LINE ---
     const response = await fetch('http://localhost:3000/generate', {
       method: 'POST',
       headers: {
@@ -34,7 +40,7 @@ async function getAiContent(type) {
       },
       body: JSON.stringify({
         user,
-        type, // 'roadmap', 'courses', or 'growth'
+        type,
       }),
     });
 
@@ -43,7 +49,7 @@ async function getAiContent(type) {
     }
 
     const data = await response.json();
-    contentEl.innerHTML = data.html; // The backend will return formatted HTML
+    contentEl.innerHTML = data.html;
 
   } catch (error) {
     console.error("Error fetching AI content:", error);
@@ -55,64 +61,80 @@ async function getAiContent(type) {
 }
 
 function showTab(tabName, element) {
-  // Update active tab style
   const buttons = document.querySelectorAll('.tabs button');
   buttons.forEach(button => button.classList.remove('active'));
   element.classList.add('active');
 
   const content = document.getElementById('content');
-  content.innerHTML = ''; // Clear previous content
+  content.innerHTML = '';
 
   if (tabName === 'roadmap' || tabName === 'courses' || tabName === 'growth') {
     getAiContent(tabName);
-  } else if (tabName === 'tasks') {
-    renderTasks();
+  } else if (tabName === 'profile') {
+    renderProfile();
   }
+}
+
+function renderProfile() {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const contentEl = document.getElementById('content');
+  
+  const profileHtml = `
+    <div class="card profile-card">
+      <h3>Your Profile</h3>
+      <p><strong>Name:</strong> ${user.name}</p>
+      <p><strong>Branch:</strong> ${user.branch}</p>
+      <p><strong>Interests:</strong> ${user.interests}</p>
+    </div>
+  `;
+  contentEl.innerHTML = profileHtml;
 }
 
 function renderTasks() {
   const user = JSON.parse(localStorage.getItem('user'));
-  const content = document.getElementById('content');
-  const taskKey = `tasks_${user.name.replace(/\s+/g, '_')}`; // Sanitize name for key
+  const taskContainer = document.getElementById('task-list-container');
+  const taskKey = `tasks_${user.name.replace(/\s+/g, '_')}`;
   let tasks = JSON.parse(localStorage.getItem(taskKey) || '[]');
 
   const taskInputHtml = `
     <div class="task-input-container">
       <input type="text" id="taskInput" placeholder="Add a new task...">
-      <button id="addTaskBtn">Add Task</button>
+      <button id="addTaskBtn">+</button>
     </div>
     <div class="task-list"></div>
   `;
-  content.innerHTML = taskInputHtml;
+  taskContainer.innerHTML = taskInputHtml;
 
-  const taskList = document.querySelector('.task-list');
-  tasks.forEach((task, index) => {
-    const taskItem = document.createElement('div');
-    taskItem.className = 'task-item card';
-    taskItem.innerHTML = `
-      <span>${task}</span>
-      <button class="delete-btn" data-index="${index}">Delete</button>
-    `;
-    taskList.appendChild(taskItem);
-  });
+  const taskList = taskContainer.querySelector('.task-list');
+  if (tasks.length === 0) {
+    taskList.innerHTML = `<p class="no-tasks">No tasks yet. Add one above!</p>`;
+  } else {
+    tasks.forEach((task, index) => {
+      const taskItem = document.createElement('div');
+      taskItem.className = 'task-item';
+      taskItem.innerHTML = `
+        <span>${task}</span>
+        <button class="delete-btn" data-index="${index}">&times;</button>
+      `;
+      taskList.appendChild(taskItem);
+    });
+  }
 
-  // Event listener for adding a task
   document.getElementById('addTaskBtn').onclick = () => {
     const input = document.getElementById('taskInput');
     if (input.value.trim() !== '') {
       tasks.push(input.value.trim());
       localStorage.setItem(taskKey, JSON.stringify(tasks));
-      renderTasks(); // Re-render the tasks list
+      renderTasks();
     }
   };
 
-  // Event listener for deleting tasks
-  document.querySelectorAll('.delete-btn').forEach(button => {
+  taskContainer.querySelectorAll('.delete-btn').forEach(button => {
     button.onclick = (e) => {
       const index = e.target.getAttribute('data-index');
       tasks.splice(index, 1);
       localStorage.setItem(taskKey, JSON.stringify(tasks));
-      renderTasks(); // Re-render
+      renderTasks();
     };
   });
 }
