@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
 :root {
-  /* Minimalist & Aesthetic Color Palette */
-  --primary-color: #4a4e69; /* Muted Indigo */
-  --secondary-color: #9a8c98; /* Dusty Lavender */
-  --background-color: #f2e9e4; /* Light Beige */
+  /* Fresh & Vibrant Color Palette */
+  --primary-color: #0077ff; /* Vibrant Blue */
+  --secondary-color: #ff007f; /* Bright Magenta */
+  --accent-color: #ffc400; /* Sunny Yellow */
+  --background-color: #f8f9fc; /* Clean Off-White */
   --card-background: #ffffff;
-  --text-color: #22223b; /* Dark Indigo */
-  --text-muted-color: #6d6a75;
-  --border-color: #c9ada7;
-  --shadow: 0 4px 20px rgba(0,0,0,0.05);
+  --text-color: #1a1a2e; /* Dark Navy */
+  --text-muted-color: #6a6a7a;
+  --border-color: #e8eaf0;
+  --shadow: 0 4px 20px rgba(0,0,0,0.07);
 }
 
 body {
@@ -35,7 +36,7 @@ body {
   text-align: center;
   border: 1px solid var(--border-color);
   margin: 0 auto;
-  position: relative;
+  position: relative; /* This is required for the close button fix */
 }
 
 h1 {
@@ -50,7 +51,7 @@ p {
   line-height: 1.6;
 }
 
-input, select, textarea {
+input, select {
   width: 100%;
   padding: 0.85rem;
   margin: 0.75rem 0;
@@ -58,15 +59,15 @@ input, select, textarea {
   border: 1px solid var(--border-color);
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
-  background-color: #fff;
+  background-color: #fdfdff;
   color: var(--text-color);
   transition: all 0.2s ease-in-out;
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus, select:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(74, 78, 105, 0.1);
+  box-shadow: 0 0 0 3px rgba(0, 119, 255, 0.1);
 }
 
 button {
@@ -74,8 +75,8 @@ button {
   border: none;
   border-radius: 8px;
   background: var(--primary-color);
-  color: white;
-  font-weight: 500;
+  color: #fff;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   width: 100%;
@@ -83,9 +84,9 @@ button {
 }
 
 button:hover {
-  background: #3c405a;
+  background: #0062cc;
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 119, 255, 0.2);
 }
 
 .dashboard-header {
@@ -103,12 +104,10 @@ button:hover {
 
 #logoutBtn {
   width: auto;
-  background: #e4e4e4;
-  color: var(--text-color);
-  font-weight: 500;
+  background: var(--secondary-color);
 }
 #logoutBtn:hover {
-  background: #d1d1d1;
+  background: #d9006c;
 }
 
 .tabs {
@@ -155,10 +154,9 @@ button:hover {
   color: var(--text-color);
 }
 
-/* === New Dashboard Layout Styles === */
 .dashboard-body {
   display: grid;
-  grid-template-columns: 1fr 300px; /* Main content and sidebar */
+  grid-template-columns: 1fr 300px;
   gap: 2rem;
   align-items: start;
 }
@@ -188,17 +186,18 @@ button:hover {
   margin-bottom: 1rem;
 }
 
-/* === Updated Task List Styles === */
 .task-input-container {
   display: flex;
   gap: 0.5rem;
   margin-bottom: 1rem;
 }
+
 #taskInput {
   flex-grow: 1;
   margin: 0;
   padding: 0.6rem;
 }
+
 #addTaskBtn {
   width: 40px;
   height: 40px;
@@ -207,10 +206,12 @@ button:hover {
   font-size: 1.5rem;
   line-height: 1;
 }
+
 .task-list {
   max-height: 40vh;
   overflow-y: auto;
 }
+
 .task-item {
   display: flex;
   justify-content: space-between;
@@ -221,6 +222,7 @@ button:hover {
 .task-item:last-child {
   border-bottom: none;
 }
+
 .delete-btn {
   background-color: transparent;
   color: var(--text-muted-color);
@@ -243,16 +245,12 @@ button:hover {
     font-size: 0.9rem;
 }
 
-/* === Profile Card Styles === */
 .profile-card p {
     margin-bottom: 1rem;
 }
 .profile-card p strong {
     color: var(--text-color);
 }
-
-
-/* ... (rest of the styles are below) ... */
 
 .loader-container {
   text-align: center;
@@ -307,7 +305,6 @@ button:hover {
 .navbar {
   background-color: transparent;
   padding: 1.5rem 0;
-  border-bottom: 1px solid var(--border-color);
 }
 
 .navbar .container {
@@ -349,12 +346,12 @@ button:hover {
 .features {
   padding: 5rem 0;
   text-align: center;
-  background-color: #fff;
 }
 
 .features h2 {
   font-size: 2.5rem;
   margin-bottom: 3rem;
+  color: var(--text-color);
 }
 
 .features-grid {
@@ -365,15 +362,23 @@ button:hover {
 }
 
 .feature-card {
-  background-color: #fff;
+  background-color: var(--card-background);
   padding: 2rem;
-  border: 1px solid var(--border-color);
   border-radius: 12px;
+  transition: transform 0.3s ease;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
 }
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+.feature-card.color-1 { border-top: 4px solid var(--primary-color); }
+.feature-card.color-2 { border-top: 4px solid var(--secondary-color); }
+.feature-card.color-3 { border-top: 4px solid var(--accent-color); }
 
 .feature-card h3 {
   margin-top: 0;
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 /* Footer */
@@ -391,7 +396,8 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -421,6 +427,7 @@ button:hover {
   text-align: center;
 }
 
+/* --- THIS SECTION IS UPDATED FOR THE FIX --- */
 .modal-close-btn {
   position: absolute;
   top: 15px;
@@ -445,4 +452,65 @@ button:hover {
 
 .hidden {
   display: none;
+}
+
+/* === Course Card Styles === */
+.course-card {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow);
+}
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.course-card h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.course-meta {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-muted-color);
+}
+.course-meta span {
+    background-color: #e8f3ff;
+    color: var(--primary-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Different colors for course cards */
+.course-card.course-1 { border-left: 5px solid var(--primary-color); }
+.course-card.course-2 { border-left: 5px solid var(--secondary-color); }
+.course-card.course-3 { border-left: 5px solid var(--accent-color); }
+.course-card.course-4 { border-left: 5px solid #e53935; }
+
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: #e8eaf0;
+    border-radius: 4px;
+    margin-top: 1rem;
+    overflow: hidden;
+}
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: var(--primary-color);
 }
