@@ -33,8 +33,7 @@ async function getAiContent(type) {
   contentEl.innerHTML = `<div class="loader-container"><div class="loader"></div><p class="loader-text">${loadingMessage}</p></div>`;
 
   try {
-    // --- THIS IS THE CORRECTED LINE ---
-    const response = await fetch('https://career-copilot-backend-u39g.onrender.com/generate', {
+    const response = await fetch('http://localhost:3000/generate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -91,11 +90,18 @@ function renderProfile() {
   contentEl.innerHTML = profileHtml;
 }
 
+// --- THIS ENTIRE FUNCTION IS NEW AND IMPROVED ---
 function renderTasks() {
   const user = JSON.parse(localStorage.getItem('user'));
   const taskContainer = document.getElementById('task-list-container');
   const taskKey = `tasks_${user.name.replace(/\s+/g, '_')}`;
   let tasks = JSON.parse(localStorage.getItem(taskKey) || '[]');
+
+  // Auto-migrate old string-based tasks to new object-based tasks
+  if (tasks.length > 0 && typeof tasks[0] === 'string') {
+    tasks = tasks.map(taskText => ({ text: taskText, completed: false }));
+    localStorage.setItem(taskKey, JSON.stringify(tasks));
+  }
 
   const taskInputHtml = `
     <div class="task-input-container">
@@ -112,26 +118,45 @@ function renderTasks() {
   } else {
     tasks.forEach((task, index) => {
       const taskItem = document.createElement('div');
-      taskItem.className = 'task-item';
+      taskItem.className = `task-item ${task.completed ? 'completed' : ''}`;
+      taskItem.dataset.index = index; // Use data-attribute for easier access
+      
       taskItem.innerHTML = `
-        <span>${task}</span>
+        <span class="task-text">${task.text}</span>
         <button class="delete-btn" data-index="${index}">&times;</button>
       `;
       taskList.appendChild(taskItem);
     });
   }
 
+  // Event listener for adding a new task
   document.getElementById('addTaskBtn').onclick = () => {
     const input = document.getElementById('taskInput');
     if (input.value.trim() !== '') {
-      tasks.push(input.value.trim());
+      // Add new tasks as objects
+      tasks.push({ text: input.value.trim(), completed: false });
       localStorage.setItem(taskKey, JSON.stringify(tasks));
       renderTasks();
     }
   };
 
+  // Event listener for toggling task completion
+  taskContainer.querySelectorAll('.task-item').forEach(item => {
+    item.onclick = function(e) {
+      // Prevent toggling when delete button is clicked
+      if (e.target.classList.contains('delete-btn')) return;
+      
+      const index = this.dataset.index;
+      tasks[index].completed = !tasks[index].completed; // Toggle the completed state
+      localStorage.setItem(taskKey, JSON.stringify(tasks));
+      renderTasks();
+    };
+  });
+
+  // Event listener for deleting a task
   taskContainer.querySelectorAll('.delete-btn').forEach(button => {
     button.onclick = (e) => {
+      e.stopPropagation(); // Stop the click from bubbling up to the task-item
       const index = e.target.getAttribute('data-index');
       tasks.splice(index, 1);
       localStorage.setItem(taskKey, JSON.stringify(tasks));
