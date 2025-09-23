@@ -33,7 +33,7 @@ async function getAiContent(type) {
       },
       body: JSON.stringify({
         user,
-        type, // 'roadmap' or 'courses'
+        type, // 'roadmap', 'courses', or 'growth'
       }),
     });
 
@@ -62,7 +62,8 @@ function showTab(tabName, element) {
   const content = document.getElementById('content');
   content.innerHTML = ''; // Clear previous content
 
-  if (tabName === 'roadmap' || tabName === 'courses') {
+  // --- THIS IS THE CORRECTED LINE ---
+  if (tabName === 'roadmap' || tabName === 'courses' || tabName === 'growth') {
     getAiContent(tabName);
   } else if (tabName === 'tasks') {
     renderTasks();
