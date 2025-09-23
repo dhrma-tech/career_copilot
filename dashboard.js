@@ -33,8 +33,7 @@ async function getAiContent(type) {
   contentEl.innerHTML = `<div class="loader-container"><div class="loader"></div><p class="loader-text">${loadingMessage}</p></div>`;
 
   try {
-    // --- THIS IS THE CORRECTED LINE ---
-    const response = await fetch('https://career-copilot-backend-u39g.onrender.com/generate', {
+    const response = await fetch('https://career-copilot-backend-u39g.onrender.com', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
