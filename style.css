@@ -1,24 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
 :root {
   --primary-color: #007bff;
   --primary-hover: #0056b3;
-  --background-color: #f8f9fa;
-  --card-background: #ffffff;
+  --background-start: #f8f9fa;
+  --background-end: #e9ecef;
+  --card-background: rgba(255, 255, 255, 0.8);
   --text-color: #212529;
-  --border-color: #e9ecef;
-  --shadow: 0 8px 24px rgba(0,0,0,0.05);
+  --border-color: rgba(0, 0, 0, 0.1);
+  --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --backdrop-filter: blur(10px);
+}
+
+body.dark-mode {
+  --primary-color: #0a84ff;
+  --primary-hover: #005ecb;
+  --background-start: #1c1c1e;
+  --background-end: #2c2c2e;
+  --card-background: rgba(44, 44, 46, 0.7);
+  --text-color: #ffffff;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--background-color);
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(45deg, var(--background-start), var(--background-end));
   color: var(--text-color);
   margin: 0;
   padding: 2rem;
   display: flex;
   justify-content: center;
+  align-items: center;
   min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .login-card, .dashboard-container {
@@ -28,12 +43,14 @@ body {
 }
 
 .login-card {
-  background-color: var(--card-background);
+  background: var(--card-background);
+  backdrop-filter: var(--backdrop-filter);
+  -webkit-backdrop-filter: var(--backdrop-filter);
   padding: 2.5rem;
   border-radius: 16px;
   box-shadow: var(--shadow);
   text-align: center;
-  margin: auto 0;
+  border: 1px solid var(--border-color);
 }
 
 h1 {
@@ -53,7 +70,9 @@ input, select {
   border-radius: 10px;
   border: 1px solid var(--border-color);
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  background-color: transparent;
+  color: var(--text-color);
 }
 
 input:focus, select:focus {
@@ -121,11 +140,14 @@ button:hover {
 }
 
 .card {
-  background-color: var(--card-background);
+  background: var(--card-background);
+  backdrop-filter: var(--backdrop-filter);
+  -webkit-backdrop-filter: var(--backdrop-filter);
   border-radius: 16px;
   box-shadow: var(--shadow);
   padding: 1.5rem;
   margin: 1rem 0;
+  border: 1px solid var(--border-color);
   border-left: 5px solid var(--primary-color);
   animation: fadeIn 0.5s ease forwards;
 }
@@ -190,4 +212,11 @@ button:hover {
 }
 .delete-btn:hover {
   background-color: #c82333;
+}
+
+/* Theme switcher */
+.theme-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
