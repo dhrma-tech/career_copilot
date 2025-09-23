@@ -48,6 +48,7 @@ if (loginForm) {
     const user = { name, branch, interests };
     localStorage.setItem('user', JSON.stringify(user));
 
-    window.location.href = 'dashboard.html';
+    // --- THIS IS THE UPDATED LINE ---
+    window.location.href = 'vision.html'; // Redirect to the new vision page
   });
 }
