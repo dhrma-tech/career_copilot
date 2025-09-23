@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const user = JSON.parse(localStorage.getItem('user'));
+  const vision = localStorage.getItem('user_vision');
 
   // If no user data is found, redirect to the login page
   if (!user) {
@@ -8,6 +9,73 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   document.getElementById('welcome').innerText = `Welcome, ${user.name}!`;
+
+  // --- NEW CODE STARTS HERE ---
+
+  // Display User's Vision
+  const visionDisplay = document.getElementById('vision-display');
+  if (visionDisplay && vision) {
+    visionDisplay.innerText = `Your Vision: ${vision}`;
+  }
+
+  // Pomodoro Timer Logic
+  const timerDisplay = document.getElementById('timer-display');
+  const startTimerBtn = document.getElementById('start-timer-btn');
+  let countdown;
+  let timerDuration = 25 * 60;
+
+  function displayTimeLeft(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainderSeconds = seconds % 60;
+    const display = `${minutes}:${remainderSeconds < 10 ? '0' : ''}${remainderSeconds}`;
+    timerDisplay.textContent = display;
+    document.title = `${display} - Career Copilot`; // Update page title
+  }
+
+  function startTimer() {
+    clearInterval(countdown);
+    const now = Date.now();
+    const then = now + timerDuration * 1000;
+    displayTimeLeft(timerDuration);
+
+    countdown = setInterval(() => {
+      const secondsLeft = Math.round((then - Date.now()) / 1000);
+      if (secondsLeft < 0) {
+        clearInterval(countdown);
+        alert('Time for a break!');
+        startTimerBtn.textContent = 'Start Focus';
+        displayTimeLeft(timerDuration); // Reset display
+        return;
+      }
+      displayTimeLeft(secondsLeft);
+    }, 1000);
+    startTimerBtn.textContent = 'Reset';
+  }
+
+  if (startTimerBtn) {
+    startTimerBtn.addEventListener('click', () => {
+      if (countdown) {
+        clearInterval(countdown);
+        countdown = null;
+        displayTimeLeft(timerDuration);
+        startTimerBtn.textContent = 'Start Focus';
+      } else {
+        startTimer();
+      }
+    });
+  }
+  
+  // Focus Mode Logic
+  const focusModeBtn = document.getElementById('focus-mode-btn');
+  const dashboardContainer = document.querySelector('.dashboard-container');
+  if (focusModeBtn) {
+    focusModeBtn.addEventListener('click', () => {
+        dashboardContainer.classList.toggle('focus-mode');
+    });
+  }
+
+  // --- NEW CODE ENDS HERE ---
+
 
   // Logout button functionality
   document.getElementById('logoutBtn').onclick = function() {
@@ -62,7 +130,6 @@ function showTab(tabName, element) {
   const content = document.getElementById('content');
   content.innerHTML = ''; // Clear previous content
 
-  // --- THIS IS THE CORRECTED LINE ---
   if (tabName === 'roadmap' || tabName === 'courses' || tabName === 'growth') {
     getAiContent(tabName);
   } else if (tabName === 'tasks') {
