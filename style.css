@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
 :root {
-  /* Minimalist & Aesthetic Color Palette */
-  --primary-color: #4a4e69; /* Muted Indigo */
-  --secondary-color: #9a8c98; /* Dusty Lavender */
-  --background-color: #f2e9e4; /* Light Beige */
+  /* Canva Inspired Color Palette */
+  --primary-color: #8a2be2; /* Blue Violet */
+  --secondary-color: #00c4cc; /* Bright Turquoise */
+  --background-color: #f7f9fa; /* Light Gray */
   --card-background: #ffffff;
-  --text-color: #22223b; /* Dark Indigo */
-  --text-muted-color: #6d6a75;
-  --border-color: #c9ada7;
-  --shadow: 0 4px 20px rgba(0,0,0,0.05);
+  --text-color: #1e1919; /* Dark Gray */
+  --text-muted-color: #636363;
+  --border-color: #dbdbdb;
+  --shadow: 0 4px 12px rgba(0,0,0,0.08);
+  --gradient-primary: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
 }
 
 body {
@@ -69,14 +70,14 @@ input, select, textarea {
 input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(74, 78, 105, 0.1);
+  box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.1);
 }
 
 button {
   padding: 0.85rem 1.5rem;
   border: none;
   border-radius: 8px;
-  background: var(--primary-color);
+  background: var(--gradient-primary);
   color: white;
   font-weight: 500;
   cursor: pointer;
@@ -86,7 +87,7 @@ button {
 }
 
 button:hover {
-  background: #3c405a;
+  opacity: 0.9;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -96,12 +97,11 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
-  background-color: transparent;
-  padding: 0;
-  border-radius: 0;
-  box-shadow: none;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 1.5rem;
+  background-color: var(--card-background);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--primary-color);
 }
 
 #logoutBtn {
@@ -112,16 +112,17 @@ button:hover {
 }
 #logoutBtn:hover {
   background: #d1d1d1;
+  opacity: 1;
 }
 
 .tabs {
   margin-bottom: 1.5rem;
-  padding: 0;
+  padding: 0 1rem;
 }
 
 .tabs button {
-  margin-right: 1.5rem;
-  padding: 0.75rem 0;
+  margin-right: 1rem;
+  padding: 0.75rem 0.25rem;
   border: none;
   background-color: transparent;
   color: var(--text-muted-color);
@@ -129,13 +130,13 @@ button:hover {
   transition: all 0.2s ease-in-out;
   font-weight: 500;
   width: auto;
-  border-bottom: 2px solid transparent;
+  border-bottom: 3px solid transparent;
   border-radius: 0;
 }
 
 .tabs button.active {
   color: var(--primary-color);
-  border-bottom: 2px solid var(--primary-color);
+  border-bottom: 3px solid var(--primary-color);
 }
 
 .card {
@@ -144,12 +145,13 @@ button:hover {
   box-shadow: var(--shadow);
   padding: 1.5rem;
   margin: 1rem 0;
-  border: 1px solid var(--border-color);
+  border: 1px solid #EAEAEA;
+  border-top: 4px solid var(--secondary-color);
   animation: fadeIn 0.5s ease forwards;
 }
 
 .card.error {
-  border-left: 4px solid #d93025;
+  border-top-color: #d93025;
 }
 
 .card h3 {
@@ -216,7 +218,7 @@ button:hover {
 /* === Landing Page Styles === */
 
 .landing-page {
-  background-color: var(--background-color);
+  background-color: #fff;
 }
 
 .container {
@@ -228,9 +230,12 @@ button:hover {
 
 /* Navbar */
 .navbar {
-  background-color: transparent;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--border-color);
+  background-color: #fff;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .navbar .container {
@@ -247,29 +252,33 @@ button:hover {
 }
 
 .nav-button {
-  background: var(--primary-color);
+  background: var(--gradient-primary);
   color: #fff;
   border: none;
   padding: 0.6rem 1.2rem;
   border-radius: 8px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .nav-button:hover {
-  background: #3c405a;
+  opacity: 0.9;
 }
 
 /* Hero Section */
 .hero {
   text-align: center;
   padding: 6rem 0;
+  background-color: #f7f9fa;
 }
 
 .hero h1 {
   font-size: 3.5rem;
   margin-bottom: 1rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero p {
@@ -287,7 +296,6 @@ button:hover {
 .features {
   padding: 5rem 0;
   text-align: center;
-  background-color: #fff;
 }
 
 .features h2 {
@@ -305,8 +313,9 @@ button:hover {
 .feature-card {
   background-color: #fff;
   padding: 2rem;
-  border: 1px solid var(--border-color);
+  border: 1px solid #e0e0e0;
   border-radius: 12px;
+  border-top: 4px solid var(--primary-color);
 }
 
 .feature-card h3 {
@@ -317,8 +326,9 @@ button:hover {
 /* Footer */
 .footer {
     text-align: center;
-    padding: 3rem 0;
-    border-top: 1px solid var(--border-color);
+    padding: 2rem 0;
+    background-color: #f7f9fa;
+    border-top: 1px solid #e0e0e0;
     color: var(--text-muted-color);
 }
 
@@ -361,8 +371,8 @@ button:hover {
 
 .modal-close-btn {
   position: absolute;
-  top: 20px; /* Adjusted for better position */
-  right: 20px; /* Adjusted for better position */
+  top: 20px;
+  right: 20px;
   background: none;
   border: none;
   font-size: 2rem;
@@ -371,6 +381,7 @@ button:hover {
   line-height: 1;
   transition: color 0.2s ease;
 }
+
 .modal-close-btn:hover {
     color: var(--text-color);
 }
