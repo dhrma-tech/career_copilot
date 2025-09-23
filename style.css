@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
 :root {
-  /* New Minimalist & Aesthetic Color Palette */
+  /* Minimalist & Aesthetic Color Palette */
   --primary-color: #4a4e69; /* Muted Indigo */
   --secondary-color: #9a8c98; /* Dusty Lavender */
   --background-color: #f2e9e4; /* Light Beige */
@@ -361,90 +361,20 @@ button:hover {
 
 .modal-close-btn {
   position: absolute;
-  top: 10px;
-  right: 15px;
+  top: 20px; /* Adjusted for better position */
+  right: 20px; /* Adjusted for better position */
   background: none;
   border: none;
   font-size: 2rem;
   color: #aaa;
   cursor: pointer;
   line-height: 1;
+  transition: color 0.2s ease;
+}
+.modal-close-btn:hover {
+    color: var(--text-color);
 }
 
 .hidden {
   display: none;
-}
-
-/* === Vision Page Styles === */
-.vision-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
-}
-.vision-container {
-  max-width: 600px;
-  width: 100%;
-}
-#vision-input {
-  width: 100%;
-  height: 150px;
-  padding: 1rem;
-  font-size: 1.1rem;
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
-  resize: none;
-  box-shadow: var(--shadow);
-  margin-bottom: 1.5rem;
-}
-.vision-page h1 {
-  font-size: 2.5rem;
-}
-
-/* === Productivity Toolkit Styles === */
-.toolkit-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-.toolkit-left h3 {
-  margin: 0;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--text-muted-color);
-}
-.toolkit-right {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-#pomodoro-timer {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-#timer-display {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary-color);
-}
-#start-timer-btn, #focus-mode-btn {
-  width: auto;
-  margin: 0;
-  padding: 0.6rem 1rem;
-  font-size: 0.9rem;
-}
-
-/* === Focus Mode Styles === */
-.dashboard-container.focus-mode .dashboard-header,
-.dashboard-container.focus-mode .tabs {
-  display: none;
-}
-.dashboard-container.focus-mode .toolkit-section {
-  border: none;
-  box-shadow: none;
-  background: transparent;
-  padding: 1.5rem 0;
 }
