@@ -33,6 +33,11 @@ app.post('/generate', async (req, res) => {
       - Stated Interests: ${user.interests}
       For each course, suggest a title, a recommended platform (like Coursera, edX, YouTube), and a short sentence on why it's useful.
       Format the entire response as clean, semantic HTML within a single <div>. Use <h3> for course titles and <p> for the platform and description. Wrap each course recommendation in a <div class="card course-item">.`;
+    } else if (type === 'growth') {
+      prompt = `Generate 2 short, insightful articles for a student named ${user.name} who is in ${user.branch} and interested in ${user.interests}. 
+      The topics should focus on personal and professional development. Examples include 'Developing a Growth Mindset for Tech Careers' or 'How to Overcome Procrastination When Learning a New Skill'.
+      The tone should be encouraging and practical.
+      Format the entire response as clean, semantic HTML. Use an <h3> for each article title and <p> tags for the content. Wrap each article in its own <div class="card">.`;
     } else {
       return res.status(400).json({ error: 'Invalid type specified.' });
     }
