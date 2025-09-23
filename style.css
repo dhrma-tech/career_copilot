@@ -1,16 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
 :root {
-  --primary-color: #0055f7;
-  --secondary-color: #00c6a7;
-  --primary-hover: #0045c7;
-  --background-color: #f7f9fa;
+  /* New Minimalist & Aesthetic Color Palette */
+  --primary-color: #4a4e69; /* Muted Indigo */
+  --secondary-color: #9a8c98; /* Dusty Lavender */
+  --background-color: #f2e9e4; /* Light Beige */
   --card-background: #ffffff;
-  --text-color: #1e1919;
-  --text-muted-color: #636363;
-  --border-color: #e8e8e8;
-  --shadow: 0 4px 12px rgba(0,0,0,0.08);
-  --gradient-primary: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  --text-color: #22223b; /* Dark Indigo */
+  --text-muted-color: #6d6a75;
+  --border-color: #c9ada7;
+  --shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
 body {
@@ -51,9 +50,10 @@ h1 {
 p {
   color: var(--text-muted-color);
   margin-bottom: 2.5rem;
+  line-height: 1.6;
 }
 
-input, select {
+input, select, textarea {
   width: 100%;
   padding: 0.85rem;
   margin: 0.75rem 0;
@@ -66,17 +66,17 @@ input, select {
   transition: all 0.2s ease-in-out;
 }
 
-input:focus, select:focus {
+input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(0, 85, 247, 0.1);
+  box-shadow: 0 0 0 3px rgba(74, 78, 105, 0.1);
 }
 
 button {
   padding: 0.85rem 1.5rem;
   border: none;
   border-radius: 8px;
-  background: var(--gradient-primary);
+  background: var(--primary-color);
   color: white;
   font-weight: 500;
   cursor: pointer;
@@ -86,7 +86,7 @@ button {
 }
 
 button:hover {
-  opacity: 0.9;
+  background: #3c405a;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -96,11 +96,12 @@ button:hover {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
-  background-color: var(--card-background);
-  padding: 1rem 2rem;
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  border-top: 4px solid var(--primary-color);
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1.5rem;
 }
 
 #logoutBtn {
@@ -111,17 +112,16 @@ button:hover {
 }
 #logoutBtn:hover {
   background: #d1d1d1;
-  opacity: 1;
 }
 
 .tabs {
   margin-bottom: 1.5rem;
-  padding: 0 1rem;
+  padding: 0;
 }
 
 .tabs button {
-  margin-right: 1rem;
-  padding: 0.75rem 0.25rem;
+  margin-right: 1.5rem;
+  padding: 0.75rem 0;
   border: none;
   background-color: transparent;
   color: var(--text-muted-color);
@@ -129,13 +129,13 @@ button:hover {
   transition: all 0.2s ease-in-out;
   font-weight: 500;
   width: auto;
-  border-bottom: 3px solid transparent;
+  border-bottom: 2px solid transparent;
   border-radius: 0;
 }
 
 .tabs button.active {
   color: var(--primary-color);
-  border-bottom: 3px solid var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
 }
 
 .card {
@@ -144,13 +144,12 @@ button:hover {
   box-shadow: var(--shadow);
   padding: 1.5rem;
   margin: 1rem 0;
-  border: 1px solid #EAEAEA;
-  border-top: 4px solid var(--secondary-color);
+  border: 1px solid var(--border-color);
   animation: fadeIn 0.5s ease forwards;
 }
 
 .card.error {
-  border-top-color: #d93025;
+  border-left: 4px solid #d93025;
 }
 
 .card h3 {
@@ -217,7 +216,7 @@ button:hover {
 /* === Landing Page Styles === */
 
 .landing-page {
-  background-color: #fff;
+  background-color: var(--background-color);
 }
 
 .container {
@@ -229,12 +228,9 @@ button:hover {
 
 /* Navbar */
 .navbar {
-  background-color: #fff;
-  padding: 1rem 0;
-  border-bottom: 1px solid #e0e0e0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  background-color: transparent;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .navbar .container {
@@ -251,33 +247,29 @@ button:hover {
 }
 
 .nav-button {
-  background: var(--gradient-primary);
+  background: var(--primary-color);
   color: #fff;
   border: none;
   padding: 0.6rem 1.2rem;
   border-radius: 8px;
   font-weight: 500;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 
 .nav-button:hover {
-  opacity: 0.9;
+  background: #3c405a;
 }
 
 /* Hero Section */
 .hero {
   text-align: center;
   padding: 6rem 0;
-  background-color: #f7f9fa;
 }
 
 .hero h1 {
   font-size: 3.5rem;
   margin-bottom: 1rem;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .hero p {
@@ -290,16 +282,12 @@ button:hover {
   padding: 1rem 2.5rem;
   font-size: 1.1rem;
 }
-.hero-button:hover {
-  opacity: 0.9;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
 
 /* Features Section */
 .features {
   padding: 5rem 0;
   text-align: center;
+  background-color: #fff;
 }
 
 .features h2 {
@@ -317,9 +305,8 @@ button:hover {
 .feature-card {
   background-color: #fff;
   padding: 2rem;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-color);
   border-radius: 12px;
-  border-top: 4px solid var(--primary-color);
 }
 
 .feature-card h3 {
@@ -330,9 +317,8 @@ button:hover {
 /* Footer */
 .footer {
     text-align: center;
-    padding: 2rem 0;
-    background-color: #f7f9fa;
-    border-top: 1px solid #e0e0e0;
+    padding: 3rem 0;
+    border-top: 1px solid var(--border-color);
     color: var(--text-muted-color);
 }
 
@@ -387,4 +373,78 @@ button:hover {
 
 .hidden {
   display: none;
+}
+
+/* === Vision Page Styles === */
+.vision-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+.vision-container {
+  max-width: 600px;
+  width: 100%;
+}
+#vision-input {
+  width: 100%;
+  height: 150px;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  resize: none;
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+}
+.vision-page h1 {
+  font-size: 2.5rem;
+}
+
+/* === Productivity Toolkit Styles === */
+.toolkit-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.toolkit-left h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-muted-color);
+}
+.toolkit-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+#pomodoro-timer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+#timer-display {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+#start-timer-btn, #focus-mode-btn {
+  width: auto;
+  margin: 0;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* === Focus Mode Styles === */
+.dashboard-container.focus-mode .dashboard-header,
+.dashboard-container.focus-mode .tabs {
+  display: none;
+}
+.dashboard-container.focus-mode .toolkit-section {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  padding: 1.5rem 0;
 }
