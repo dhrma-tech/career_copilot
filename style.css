@@ -427,7 +427,6 @@ button:hover {
   text-align: center;
 }
 
-/* --- THIS SECTION IS UPDATED FOR THE FIX --- */
 .modal-close-btn {
   position: absolute;
   top: 15px;
@@ -455,16 +454,24 @@ button:hover {
 }
 
 /* === Course Card Styles === */
+
+/* --- THIS SECTION IS NEW AND IMPROVED --- */
+.course-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  margin-bottom: 1.5rem;
+}
+
 .course-card {
     background-color: var(--card-background);
     border-radius: 12px;
     padding: 1.5rem;
-    margin-bottom: 1.5rem;
     border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: var(--shadow);
 }
-.course-card:hover {
+.course-card-link:hover .course-card {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
@@ -510,7 +517,7 @@ button:hover {
     overflow: hidden;
 }
 .progress-bar {
-    width: 0%;
+    width: 0%; /* Can be updated with JS later */
     height: 100%;
     background-color: var(--primary-color);
 }
