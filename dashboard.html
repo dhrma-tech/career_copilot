@@ -13,15 +13,27 @@
       <button id="logoutBtn">Logout</button>
     </header>
 
-    <div class="tabs">
-      <button class="active" onclick="showTab('roadmap', this)">Roadmap</button>
-      <button onclick="showTab('courses', this)">Courses</button>
-      <button onclick="showTab('growth', this)">Career & Self-Growth</button>
-      <button onclick="showTab('tasks', this)">Tasks</button>
-    </div>
+    <div class="dashboard-body">
+      <main class="dashboard-main">
+        <div class="tabs">
+          <button class="active" onclick="showTab('roadmap', this)">Roadmap</button>
+          <button onclick="showTab('courses', this)">Courses</button>
+          <button onclick="showTab('growth', this)">Career & Self-Growth</button>
+          <button onclick="showTab('profile', this)">My Profile</button>
+        </div>
 
-    <div id="content">
-      </div>
+        <div id="content">
+          </div>
+      </main>
+
+      <aside class="dashboard-sidebar">
+        <div class="sidebar-widget">
+          <h3>My Tasks</h3>
+          <div id="task-list-container">
+            </div>
+        </div>
+      </aside>
+    </div>
   </div>
   <script src="dashboard.js" defer></script>
 </body>
