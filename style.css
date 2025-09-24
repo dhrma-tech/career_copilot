@@ -308,17 +308,18 @@ button:hover {
   padding: 1.5rem 0;
   position: relative;
   z-index: 10;
+  height: 60px; /* Give navbar a fixed height */
 }
 
 .navbar .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Center since logo is gone */
   align-items: center;
 }
 
 .nav-brand {
   font-family: 'Poppins', sans-serif;
-  font-size: 2.2rem;
+  font-size: 2.8rem; /* Made logo bigger */
   font-weight: 700;
   text-decoration: none;
   background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
@@ -330,6 +331,7 @@ button:hover {
   padding: 5px 0;
   position: relative;
   display: inline-block;
+  margin-bottom: 1.5rem; /* Add space below logo */
 }
 
 .nav-brand:hover {
@@ -339,8 +341,8 @@ button:hover {
 
 .nav-brand::before {
   content: '🚀';
-  font-size: 1.8rem;
-  margin-right: 8px;
+  font-size: 2.2rem; /* Adjusted icon size */
+  margin-right: 10px;
   display: inline-block;
   transform: rotate(-20deg);
   transition: transform 0.3s ease;
@@ -354,7 +356,7 @@ button:hover {
 /* Hero Section */
 .hero {
   text-align: center;
-  padding: 6rem 0;
+  padding: 4rem 0 6rem 0; /* Adjusted padding */
   position: relative;
   z-index: 10;
 }
@@ -362,6 +364,7 @@ button:hover {
 .hero h1 {
   font-size: 3.5rem;
   margin-bottom: 1rem;
+  margin-top: 0; /* Remove top margin */
 }
 
 .hero p {
