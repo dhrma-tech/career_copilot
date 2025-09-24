@@ -292,7 +292,7 @@ button:hover {
 /* === Landing Page Styles === */
 .landing-page {
   background-color: var(--background-color);
-  position: relative; /* Needed for the animated background */
+  position: relative;
 }
 
 .container {
@@ -317,11 +317,39 @@ button:hover {
 }
 
 .nav-brand {
-  font-size: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2rem;
   font-weight: 700;
-  color: var(--text-color);
   text-decoration: none;
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--primary-color);
+  letter-spacing: -1px;
+  transition: all 0.3s ease;
+  padding: 5px 0;
+  position: relative;
+  display: inline-block;
 }
+
+.nav-brand:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.nav-brand::before {
+  content: '🚀';
+  font-size: 1.8rem;
+  margin-right: 8px;
+  display: inline-block;
+  transform: rotate(-20deg);
+  transition: transform 0.3s ease;
+}
+
+.nav-brand:hover::before {
+  transform: rotate(-30deg) scale(1.1);
+}
+
 
 /* Hero Section */
 .hero {
