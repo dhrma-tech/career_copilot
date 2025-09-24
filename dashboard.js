@@ -84,7 +84,7 @@ function renderProfile() {
     <div class="card profile-card">
       <h3>Your Profile</h3>
       <p><strong>Name:</strong> ${user.name}</p>
-      <p><strong>Branch:</strong> ${user.branch}</p>
+      <p><strong>Academic Field:</strong> ${user.academic}</p>
       <p><strong>Interests:</strong> ${user.interests}</p>
     </div>
   `;
@@ -139,5 +139,3 @@ function renderTasks() {
     };
   });
 }
-
-
