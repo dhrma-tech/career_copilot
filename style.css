@@ -293,7 +293,6 @@ button:hover {
 .landing-page {
   background-color: var(--background-color);
   position: relative; /* Needed for the animated background */
-  overflow: hidden; /* Hide overflowing shapes */
 }
 
 .container {
