@@ -399,6 +399,16 @@ button:hover {
     z-index: 10;
 }
 
+.footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
 /* Modal Styles */
 .modal-overlay {
   position: fixed;
