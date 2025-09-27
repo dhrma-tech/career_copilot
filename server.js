@@ -47,7 +47,7 @@ app.post('/generate', async (req, res) => {
     }
 
     // Call the Gemini API
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
     const result = await model.generateContent(prompt);
     const response = await result.response;
     let text = response.text();
@@ -68,4 +68,5 @@ app.post('/generate', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
 
