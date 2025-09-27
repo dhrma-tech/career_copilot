@@ -6,7 +6,7 @@ require('dotenv').config();
 
 // Initialize Express app and Google Generative AI
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 
 // Middleware
@@ -68,3 +68,4 @@ app.post('/generate', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
