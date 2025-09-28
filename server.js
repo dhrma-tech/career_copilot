@@ -50,7 +50,7 @@ app.post('/generate', async (req, res) => {
     // Call the Groq API
     const chatCompletion = await groq.chat.completions.create({
         messages: [{ role: 'user', content: prompt }],
-        model: 'llama3-8b-8192', // Or another model like 'mixtral-8x7b-32768'
+        model: 'llama-3.1-8b-instant', // Or another model like 'mixtral-8x7b-32768'
     });
     
     let text = chatCompletion.choices[0]?.message?.content || "";
@@ -71,3 +71,4 @@ app.post('/generate', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
