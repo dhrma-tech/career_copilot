@@ -1,13 +1,15 @@
 // Import required packages
 const express = require('express');
-const { GoogleGenerativeAI } = require('@google/generative-ai');
+const Groq = require('groq-sdk');
 const cors = require('cors');
 require('dotenv').config();
 
-// Initialize Express app and Google Generative AI
+// Initialize Express app and Groq
 const app = express();
 const port = process.env.PORT || 3000;
-const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+const groq = new Groq({
+    apiKey: process.env.GROQ_API_KEY
+});
 
 // Middleware
 app.use(cors());
@@ -26,7 +28,6 @@ app.post('/generate', async (req, res) => {
       Generate a step-by-step guide. For each step, provide a title and a brief, encouraging description. The tone should be highly supportive and motivational.
       Format the response as clean, semantic HTML. The response should ONLY contain the HTML content for the roadmap, without any surrounding <html>, <head>, <body> tags, or markdown code fences. Use <h3> for step titles and <p> for descriptions. Wrap each step in a <div class="card roadmap-step">.`;
     } else if (type === 'courses') {
-      // --- THIS PROMPT IS UPDATED TO INCLUDE LINKS ---
       prompt = `Recommend a list of 3-4 essential online courses for a student in ${user.academic} with interests in ${user.interests}.
       For each course, provide a title, a recommended platform, a short sentence on why it's useful, and a difficulty level (Beginner, Intermediate, or Advanced).
       Format the entire response as clean, semantic HTML. The response should ONLY contain the HTML content, without any surrounding markdown code fences.
@@ -46,14 +47,16 @@ app.post('/generate', async (req, res) => {
       return res.status(400).json({ error: 'Invalid type specified.' });
     }
 
-    // Call the Gemini API
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    let text = response.text();
+    // Call the Groq API
+    const chatCompletion = await groq.chat.completions.create({
+        messages: [{ role: 'user', content: prompt }],
+        model: 'llama3-8b-8192', // Or another model like 'mixtral-8x7b-32768'
+    });
     
-    // Clean the response to remove markdown fences and unwanted HTML tags
-    text = text.replace(/```html/g, "").replace(/```/g, "").replace(/<\/?(html|head|body)[^>]*>/g, "").trim();
+    let text = chatCompletion.choices[0]?.message?.content || "";
+
+    // Clean the response to remove markdown fences
+    text = text.replace(/```html/g, "").replace(/```/g, "").trim();
 
     // Send the AI-generated HTML back to the frontend
     res.json({ html: text });
@@ -68,6 +71,3 @@ app.post('/generate', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
-
-
-
