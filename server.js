@@ -8,7 +8,7 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 const groq = new Groq({
-    apiKey: process.env.GROQ_API_KEY
+    apiKey: process.env.GOOGLE_API_KEY
 });
 
 // Middleware
@@ -71,4 +71,5 @@ app.post('/generate', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
 
